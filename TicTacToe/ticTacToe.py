@@ -82,7 +82,6 @@ def checkRow():
 
 def checkColumn():
     return getPlayerNumber(next((grid[0][i] for i in [0,2,4] if (len(set(row[i] for row in grid[0:5:2])) == 1 and grid[0][i] in players)), ''))
-    
     # player = ''
     # if grid[0][0] == grid[2][0] and grid[0][0] == grid[4][0] and grid[0][0] in players:
     #     player = grid[0][0]
@@ -92,13 +91,14 @@ def checkColumn():
     #     player = grid[0][4]
     # return getPlayerNumber(player)
 
-def checkDiagonal():
-    player = ''
-    if grid[0][0] == grid[2][2] and grid[0][0] == grid[4][4] and grid[0][0] in players:
-        player = grid[0][0]
-    elif grid[4][0] == grid[2][2] and grid[4][0] == grid[0][4] and grid[4][0] in players:
-        player = grid[4][0]
-    return getPlayerNumber(player)
+def checkDiagonal(): 
+    return getPlayerNumber(next((grid[i*4][0] for i in range(2) if grid[i*4][0] == grid[2][2] == grid[4-i*4][4] and grid[i*4][0] in players), ''))
+    # player = ''
+    # if grid[0][0] == grid[2][2] and grid[0][0] == grid[4][4] and grid[0][0] in players:
+    #     player = grid[0][0]
+    # elif grid[4][0] == grid[2][2] and grid[4][0] == grid[0][4] and grid[4][0] in players:
+    #     player = grid[4][0]
+    # return getPlayerNumber(player)
 
 def getPlayerNumber(playerChar):
     if playerChar == 'X':
